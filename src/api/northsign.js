@@ -30,7 +30,7 @@ export default async function corsHandler(req, res) {
 
 
   //res.append('Content-Type', 'text/plain; charset=utf-8');
-  res.append('Content-Type', 'image/svg+xml');
+  res.append('Content-Type', 'image/svg+xml; charset=utf-8');
 
 
   var degrees = req.query.degrees;

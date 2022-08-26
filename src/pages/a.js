@@ -6,6 +6,14 @@ export default () => {
   return (
 <div>
     <scriptComponent />
+<script
+  dangerouslySetInnerHTML={{
+    __html: `
+      var foo = 'bar';
+      console.log(foo);
+    `,
+  }}
+/>
 <div> a.JS </div>
 </div>
   )

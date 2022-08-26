@@ -16,7 +16,11 @@ https://northsign.gtsb.io/?scale=13\&degrees=4\&scale=7
   createRedirect({ fromPath: `/?degrees=:degrees&scale=:scale`,
     toPath: `/api/northsign/?degrees=:degrees&scale=:scale` })
 
-*/
+  // /?y=2\x\&degrees=4\&scale=7 -> /?y=2x&degrees=4
   createRedirect({ fromPath: `/?scale=:scale`,
     toPath: `/api/northsign/?scale=:scale` })
+*/
+  // /?y=2\x\&degrees=4\&scale=7 -> /?y=2x&degrees=4
+  createRedirect({ fromPath: `/?dummyParameter=:dummyParameter`,
+    toPath: `/api/northsign/?dummyParameter=:dummyParameter` })
 }

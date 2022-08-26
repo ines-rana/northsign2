@@ -8,8 +8,9 @@ export default () => {
   dangerouslySetInnerHTML={{
     __html: `
 
+ console.log("M I A M");
  if(typeof req !== 'undefined' && req.url) {
-   console.log("H I I I);
+   console.log("H I I I");
  }
  if(typeof window !== 'undefined' && window.document) {
     // run this script on client-side

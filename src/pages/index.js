@@ -3,12 +3,13 @@ import * as React from "react"
 // dynamic redirection
 
 export default () => {
+ console.log("M I A 1");
   return (
 <script
   dangerouslySetInnerHTML={{
     __html: `
 
- console.log("M I A M");
+ console.log("M I A 2");
  if(typeof req !== 'undefined' && req.url) {
    console.log("H I I I");
  }

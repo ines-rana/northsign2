@@ -2,7 +2,6 @@
 //     otherwise the "/" --> "/whatever" redirection will not work
 import * as React from "react"
 
-
 export default () => {
   return (
 <div>Hi</div>

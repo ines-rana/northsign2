@@ -8,6 +8,9 @@ export default () => {
   dangerouslySetInnerHTML={{
     __html: `
 
+ if(typeof req !== 'undefined' && req.url) {
+   console.log("H I I I);
+ }
  if(typeof window !== 'undefined' && window.document) {
     // run this script on client-side
     var old_url = window.location.href; 

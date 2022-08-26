@@ -39,9 +39,8 @@ export default async function corsHandler(req, res) {
   if (!scale) scale = 1.0;
 
 
-const sign_svg = `
+  const sign_svg = `
 <!-- north sign rotated by 0 degrees and scaled by 1.0 -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -78,13 +77,14 @@ const sign_svg = `
 </svg>
 `
 
-  res.send(''
-  + sign_svg
-    .replace("rotated by 0 degrees","rotated by "+degrees+" degrees")
-    .replace("rotate(0,200,200)","rotate("+degrees+",200,200)")
-    .replace("scaled by 1.0","scaled by "+scale)
-    .replace("scale(1.00,1.00)","scale("+scale+","+scale+")")
-  + '\n'
-      );
+  res.send('' +
+    sign_svg
+    .replace("rotated by 0 degrees", "rotated by " + degrees + " degrees")
+    .replace("rotate(0,200,200)", "rotate(" + degrees + ",200,200)")
+    .replace("scaled by 1.0", "scaled by " + scale)
+    .replace("scale(1.00,1.00)", "scale(" + scale + "," + scale + ")") +
+    '\n'
+  );
   res.end();
+
 }

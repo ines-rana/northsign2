@@ -1,10 +1,6 @@
 exports.createPages = async ({ graphql, actions }) => {
   const { createRedirect } = actions;
 
-  createRedirect({
-    fromPath: `/`,
-    toPath: `/api/northsign`,
-  })
 
   createRedirect({
     fromPath: `/?degrees=:degrees&scale=:scale`,
@@ -17,4 +13,8 @@ exports.createPages = async ({ graphql, actions }) => {
     conditions: { country: [`us`, `gb`] }
   })
 
+  createRedirect({
+    fromPath: `/`,
+    toPath: `/api/northsign`,
+  })
 }

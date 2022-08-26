@@ -29,5 +29,5 @@ https://northsign.gtsb.io/?scale=13\&degrees=4\&scale=7
 */
 }
 
-  createRedirect({ fromPath: `/`, toPath: `/api/northsign/?` })
+  createRedirect({ fromPath: `/`, toPath: `/api/northsign/?x=2` })
 }

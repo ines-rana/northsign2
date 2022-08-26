@@ -10,13 +10,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
 https://northsign.gtsb.io/?scale=13\&degrees=4\&scale=7
 
-
-  createRedirect({
-    fromPath: `/?&scale=:scale&degrees=:degrees`,
-    toPath: `/api/northsign/?degrees=:degrees&scale=:scale`,
-  })
-*/
-
   createRedirect({
     fromPath: `/?degrees=:degrees`,
     toPath: `/api/northsign/?degrees=:degrees`,
@@ -26,4 +19,10 @@ https://northsign.gtsb.io/?scale=13\&degrees=4\&scale=7
     toPath: `/api/northsign/?scale=:scale`,
   })
 
+*/
+
+  createRedirect({
+    fromPath: `/?scale=:scale&degrees=:degrees`,
+    toPath: `/api/northsign/?degrees=:degrees&scale=:scale`,
+  })
 }

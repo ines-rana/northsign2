@@ -31,7 +31,14 @@ https://northsign.gtsb.io/?scale=13\&degrees=4\&scale=7
   createRedirect({ fromPath: `/`, toPath: `/api/northsign/?x=2` })
 */
 
+  // this works
   createRedirect({ fromPath: `/index.js`, toPath: `/api/northsign/?x=2` })
-  createRedirect({ fromPath: `/`, toPath: `/index.js?x=7` })
+
+  createRedirect({
+    fromPath: '/',
+    toPath: '/home?x=23',
+    isPermanent: true,
+    redirectInBrowser: true,
+ })
 
 }

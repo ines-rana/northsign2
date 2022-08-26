@@ -3,7 +3,6 @@ module.exports = {
         siteUrl: `https://www.yourdomain.tld`,
     },
     plugins: [
-    "gatsby-plugin-react-helmet",
     // other plugins
     ]
 }

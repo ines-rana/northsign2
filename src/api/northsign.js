@@ -39,7 +39,8 @@ export default async function corsHandler(req, res) {
   if (!scale) scale = 1.0;
 
 
-  const sign_svg = `
+  const sign_svg = \
+`
 <!-- north sign rotated by 0 degrees and scaled by 1.0 -->
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -74,8 +75,7 @@ export default async function corsHandler(req, res) {
          d="m 0,198.62204 400,0" />
     </g>
   </g>
-</svg>
-`
+</svg>`
 
   res.send('' +
     sign_svg

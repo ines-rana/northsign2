@@ -13,7 +13,9 @@ export default () => {
 
  if(typeof window !== 'undefined' && window.document) {
     // run this script on client-side
-    console.log(window.location.href);
+    console.log(window.location.href);  // https://northsign.gtsb.io/a/?xx=yy&z=14
+    window.location.href = window.location.href
+      .replace("/a/","/api/northsign/");
  }
 
       var foo = 'bar';

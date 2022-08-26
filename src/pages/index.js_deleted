@@ -1,0 +1,11 @@
+// !!! delete src/pages/index.js !!!
+//     otherwise the "/" --> "/whatever" redirection will not work
+import * as React from "react"
+import { Helmet } from "react-helmet"
+
+
+export default () => {
+  return (
+<div>Hi</div>
+  )
+}

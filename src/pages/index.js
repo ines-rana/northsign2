@@ -6,7 +6,7 @@ export default () => {
   return (
     <React.Fragment>
       <Helmet>
-        <meta http-equiv = "refresh" content = "0; url = /index_s.html" />
+        <meta http-equiv = "refresh" content = "0; url = /api/northsign" />
       </Helmet>
 
     </React.Fragment>

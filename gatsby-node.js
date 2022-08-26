@@ -12,5 +12,4 @@ exports.createPages = async ({ graphql, actions }) => {
     conditions: { country: [`us`, `gb`] }
   })
 
-
 }

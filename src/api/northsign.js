@@ -39,8 +39,7 @@ export default async function corsHandler(req, res) {
   if (!scale) scale = 1.0;
 
 
-  const sign_svg = \
-`<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+  const sign_svg = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- north sign rotated by 0 degrees and scaled by 1.0 -->
 
 <svg

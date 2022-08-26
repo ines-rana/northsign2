@@ -23,7 +23,11 @@ https://northsign.gtsb.io/?scale=13\&degrees=4\&scale=7
   // /?y=2\x\&degrees=4\&scale=7\&dummyParameter=1 -> /?y=2x&degrees=4&scale=4
   createRedirect({ fromPath: `/?dummyParameter=:dummyParameter`,
     toPath: `/api/northsign/?dummyParameter=:dummyParameter` })
+
+  // This will NOT work; no redirection
+  createRedirect({ fromPath: `/?`, toPath: `/api/northsign/?` })
 */
+}
 
   createRedirect({ fromPath: `/?`,
     toPath: `/api/northsign/?` })

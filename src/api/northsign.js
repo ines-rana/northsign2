@@ -5,7 +5,6 @@
 //  scale   :  desired scale factor
 
 
-export default function handler(req, res) {
 
 const version = "2022-08"
 

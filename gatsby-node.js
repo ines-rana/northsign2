@@ -5,13 +5,13 @@ exports.createPages = async ({ graphql, actions }) => {
   //     otherwise the following will not work
 
   createRedirect({
+    isPermanent: true,
+    redirectInBrowser: true,
     fromPath: '/',
     toPath: '/api/northsign/',
   //OK toPath: '/api/northsign/',
   //OK toPath: 'https://northsign.gatsbyjs.io/api/northsign/',
   //OK toPath: 'https://northsign.gtsb.io/api/northsign/',
-    isPermanent: true,
-    redirectInBrowser: true,
  })
 
 }

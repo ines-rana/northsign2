@@ -6,7 +6,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   createRedirect({
     fromPath: '/',
-    toPath: '/api/northsign/',
+    toPath: 'https://northsign.gatsbyjs.io/api/northsign/',
     isPermanent: true,
     redirectInBrowser: true,
  })

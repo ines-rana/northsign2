@@ -13,7 +13,9 @@ const version = "2022-08"
 import Cors from "cors"
 const cors = Cors()
 
-const { convert } = require('convert-svg-to-png');
+import fs from 'fs';
+import svg2img from 'svg2img';
+import {temporaryFile} from 'tempy';
 
 export default async function corsHandler(req, res) {
 
@@ -103,11 +105,29 @@ export default async function corsHandler(req, res) {
 
 
     case "PNG":      // doesn't work; this function cannot output binary data
-      const png = await convert(generated_svg);
+        const outputFilePath = temporaryFile();
+
+        svg2img(generated_svg, function(error, buffer) {
+          //returns a Buffer
+//        fs.writeFileSync(outputFilePath, buffer);
+
+console.log("typeof buffer / length:", typeof buffer, buffer.length);
+res.append("x-dbg-buffer", typeof buffer + " " + buffer.length);
+res.append("x-version2", "21");
       res.append('Content-Type', 'image/png');
-  //  res.write(png.toString("binary"), "binary");
-      res.send(png);
+      res.write(buffer.toString("binary"), "binary");
+  //  res.send(png);
       res.end();
+        });
+
+
+        // delete temporary file
+        try {
+          fs.unlinkSync(outputFilePath);
+        } catch(err) {
+          console.error(err)
+        }
+
       return;
       break;
 

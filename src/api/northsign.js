@@ -1,9 +1,10 @@
-// Create a north sign (in SVG or PNG format)
+/* Generate a north arrow icon (in SVG format)
 
-// query parameters
-//  degrees :  desired rotation
-//  cm      :  desired size in cm
-//  scale   :  desired scale factor  (overrides cm, if both cm and scale are specified)
+Query parameters
+degrees :  desired rotation
+cm      :  desired size in cm
+scale   :  desired scale factor (overrides cm, if both cm and scale are specified)
+*/
 
 const version = "2022-08";
 

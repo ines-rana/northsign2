@@ -14,7 +14,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "svg2img": "^1.0.0",
+    "svg2img": "^0.9.4",
     "tempy": "^3.0.0",
 
     "gatsby": "^3.13.1",

@@ -92,7 +92,7 @@ export default async function corsHandler(req, res) {
     ;
 
 
-  switch(steps.code.$return_value.format) {
+  switch(format) {
 
     case "SVG":
       res.append('Content-Type', 'image/svg+xml; charset=utf-8');

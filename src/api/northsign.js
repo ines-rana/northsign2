@@ -81,7 +81,7 @@ export default async function corsHandler(req, res) {
 </svg>
 `
 
-  const result_svg =
+  const generated_svg =
     sign_svg
     .replace("rotated by 0 degrees", "rotated by " + degrees + " degrees")
     .replace("rotate(0,200,200)", "rotate(" + degrees + ",200,200)")
@@ -96,14 +96,14 @@ export default async function corsHandler(req, res) {
 
     case "SVG":
       res.append('Content-Type', 'image/svg+xml; charset=utf-8');
-      res.send( result_svg + '\n' );
+      res.send( generated_svg + '\n' );
       res.end();
       return;
       break;
 
 
     case "PNG":      // doesn't work; this function cannot output binary data
-      const png = await convert(result_svg);
+      const png = await convert(generated_svg);
       res.append('Content-Type', 'image/png');
   //  res.write(png.toString("binary"), "binary");
       res.send(png);

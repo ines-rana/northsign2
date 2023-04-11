@@ -7,7 +7,7 @@
 
 
 
-const version = "2022-08f"
+const version = "2022-08g"
 
 import Cors from "cors"
 const cors = Cors()
@@ -90,35 +90,35 @@ export default async function corsHandler(req, res) {
     .replace('height="400"', 'height="' + scale*400 + '"')
     ;
 
-  if (format === "SVG") {
-    res.append('Content-Type', 'image/svg+xml; charset=utf-8');
-    res.send( result_svg + '\n' );
-    res.end();
-    return;
-  }
+
+  switch(steps.code.$return_value.format) {
+
+    case "SVG":
+      res.append('Content-Type', 'image/svg+xml; charset=utf-8');
+      res.send( result_svg + '\n' );
+      res.end();
+      return;
+      break;
 
 
-  if (format === "PNG") {
-    const png = await convert(result_svg);
-    res.append('x-dbg', 
-      "typeof png" + typeof png +
-      ''
-    );
-//  res.append('Content-Type', 'image/png');
-res.setHeader('Content-Type', 'image/png');
-//  res.write(png.toString("binary"), "binary");
-    res.write(png);
-//  res.send(png);
-    res.end();
-    return;
-  }
+    case "SVG":
+      const png = await convert(result_svg);
+      res.append('Content-Type', 'image/png');
+  //  res.write(png.toString("binary"), "binary");
+  //  res.write(png);
+      res.send(png);
+      res.end();
+      return;
+      break;
 
 
-  if ( true ) {
-    //res.append('Content-Type', 'text/plain; charset=utf-8');
-    res.send('invalid query parameter "format" (acceptable values: "PNG" or "SVG")' + '\n' );
-    res.end();
-    return;
+    default:
+      //res.append('Content-Type', 'text/plain; charset=utf-8');
+      res.send('invalid query parameter "format" (acceptable values: "PNG" or "SVG")' + '\n' );
+      res.end();
+      return;
+
+
   }
 
 }

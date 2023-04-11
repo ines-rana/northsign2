@@ -29,10 +29,15 @@ export default async function corsHandler(req, res) {
 
 
 
-  var degrees = req.query.degrees;
+  const degrees = Number(req.query.degrees);
   if (!degrees) degrees = 0;
-  var scale = req.query.scale;
+
+  const cm = Number(req.query.cm);
+
+  var scale = Number(req.query.scale);
+  if (!scale && (cm>0)) scale = cm / 2.54 / 400 * 72;  // 72 pts/inch
   if (!scale) scale = 1.0;
+  //console.log("query.cm:", req.query.cm, "  cm:", cm, "  scale:", scale);
 
 
   const sign_svg = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>

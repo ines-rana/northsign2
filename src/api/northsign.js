@@ -6,7 +6,7 @@
 //  format  :  SVG (default) | PNG
                // PNG doesn't work; this function cannot output binary data
 
-const version = "2022-08"
+const version = "2022-08";
 
 import Cors from "cors"
 const cors = Cors()
@@ -115,7 +115,7 @@ export default async function corsHandler(req, res) {
 
         console.log("typeof buffer / length:", typeof buffer, buffer.length);
         res.append("x-dbg-buffer", typeof buffer + " " + buffer.length);
-        res.append("x-version2", "21");
+        res.append("x-version-2", "21");
         res.append('Content-Type', 'image/png');
         res.write(buffer.toString("binary"), "binary");
         //  res.send(png);

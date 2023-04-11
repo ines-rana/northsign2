@@ -3,11 +3,12 @@
 // query parameters
 //  degrees :  desired rotation
 //  scale   :  desired scale factor
-//  format  :  PNG | SVG (default)
+//  format  :  SVG (default) | PNG
+               // PNG doesn't work; this function cannot output binary data
 
 
 
-const version = "2022-08g"
+const version = "2022-08"
 
 import Cors from "cors"
 const cors = Cors()
@@ -60,7 +61,7 @@ export default async function corsHandler(req, res) {
        transform="rotate(0,200,200)"
        style="fill:none;stroke-width:0.025in"
        id="layer1">
-  
+
       <!-- circle -->
       <path
          style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -80,7 +81,7 @@ export default async function corsHandler(req, res) {
 </svg>
 `
 
-  const result_svg = 
+  const result_svg =
     sign_svg
     .replace("rotated by 0 degrees", "rotated by " + degrees + " degrees")
     .replace("rotate(0,200,200)", "rotate(" + degrees + ",200,200)")
@@ -101,11 +102,10 @@ export default async function corsHandler(req, res) {
       break;
 
 
-    case "SVG":
+    case "PNG":      // doesn't work; this function cannot output binary data
       const png = await convert(result_svg);
       res.append('Content-Type', 'image/png');
   //  res.write(png.toString("binary"), "binary");
-  //  res.write(png);
       res.send(png);
       res.end();
       return;

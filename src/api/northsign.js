@@ -29,7 +29,7 @@ export default async function corsHandler(req, res) {
 
 
 
-  const degrees = Number(req.query.degrees);
+  var degrees = Number(req.query.degrees);
   if (!degrees) degrees = 0;
 
   const cm = Number(req.query.cm);

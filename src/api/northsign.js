@@ -2,23 +2,13 @@
 
 // query parameters
 //  degrees :  desired rotation
-//  scale   :  desired scale factor
-//  format  :  SVG (default) | PNG
-               // PNG doesn't work; this function cannot output binary data
+//  cm      :  desired size in cm
+//  scale   :  desired scale factor  (overrides cm, if both cm and scale are specified)
 
 const version = "2022-08";
 
 import Cors from "cors"
 const cors = Cors()
-
-import fs from 'fs';
-import {
-  temporaryFile
-} from 'tempy';
-
-import svg2img from 'svg2img';
-import * as bufferUtil from "bufferutil";
-import * as UTF8validate from "utf-8-validate";
 
 export default async function corsHandler(req, res) {
 
@@ -42,9 +32,6 @@ export default async function corsHandler(req, res) {
   if (!degrees) degrees = 0;
   var scale = req.query.scale;
   if (!scale) scale = 1.0;
-  var format = req.query.format;
-  if (!format) format = "SVG";
-  format = format.toUpperCase();
 
 
   const sign_svg = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -93,54 +80,13 @@ export default async function corsHandler(req, res) {
     .replace("scaled by 1.0", "scaled by " + scale)
     .replace("scale(1.00,1.00)", "scale(" + scale + "," + scale + ")")
     .replace('width="400"', 'width="' + scale * 400 + '"')
-    .replace('height="400"', 'height="' + scale * 400 + '"');
+    .replace('height="400"', 'height="' + scale * 400 + '"')
+    ;
 
 
-  switch (format) {
-
-    case "SVG":
-      res.append('Content-Type', 'image/svg+xml; charset=utf-8');
-      res.send(generated_svg + '\n');
-      res.end();
-      return;
-      break;
-
-
-    case "PNG": // doesn't work; this function cannot output binary data
-      const outputFilePath = temporaryFile();
-
-      svg2img(generated_svg, function(error, buffer) {
-        //returns a Buffer
-        //        fs.writeFileSync(outputFilePath, buffer);
-
-        console.log("typeof buffer / length:", typeof buffer, buffer.length);
-        res.append("x-dbg-buffer", typeof buffer + " " + buffer.length);
-        res.append("x-version-2", "21");
-        res.append('Content-Type', 'image/png');
-        res.write(buffer.toString("binary"), "binary");
-        //  res.send(png);
-        res.end();
-      });
-
-
-      // delete temporary file
-      try {
-        fs.unlinkSync(outputFilePath);
-      } catch (err) {
-        console.error(err)
-      }
-
-      return;
-      break;
-
-
-    default:
-      //res.append('Content-Type', 'text/plain; charset=utf-8');
-      res.send('invalid query parameter "format" (acceptable values: "PNG" or "SVG")' + '\n');
-      res.end();
-      return;
-
-
-  }
+  res.append('Content-Type', 'image/svg+xml; charset=utf-8');
+  res.send(generated_svg + '\n');
+  res.end();
+  return;
 
 }

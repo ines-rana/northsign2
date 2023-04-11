@@ -14,7 +14,8 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "convert-svg-to-png": "^0.6.4",
+    "svg2img": "^1.0.0-beta.2",
+    "tempy": "^3.0.0",
 
     "gatsby": "^3.13.1",
     "react": "^17.0.1",

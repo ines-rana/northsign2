@@ -7,7 +7,7 @@
 
 
 
-const version = "2022-08d"
+const version = "2022-08e"
 
 import Cors from "cors"
 const cors = Cors()
@@ -106,8 +106,8 @@ export default async function corsHandler(req, res) {
     );
 //  res.append('Content-Type', 'image/png');
 res.setHeader('Content-Type', 'image/png');
-//  res.write(png.toString("binary"), "binary");
-    res.send(png);
+    res.write(png.toString("binary"), "binary");
+//  res.send(png);
     res.end();
     return;
   }

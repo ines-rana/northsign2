@@ -85,7 +85,10 @@ export default async function corsHandler(req, res) {
     .replace("rotated by 0 degrees", "rotated by " + degrees + " degrees")
     .replace("rotate(0,200,200)", "rotate(" + degrees + ",200,200)")
     .replace("scaled by 1.0", "scaled by " + scale)
-    .replace("scale(1.00,1.00)", "scale(" + scale + "," + scale + ")");
+    .replace("scale(1.00,1.00)", "scale(" + scale + "," + scale + ")")
+    .replace('width="400"', 'width=" + scale*400 + '"')
+    .replace('height="400"', 'height=" + scale*400 + '"')
+    ;
 
   if (format === "SVG") {
     res.append('Content-Type', 'image/svg+xml; charset=utf-8');

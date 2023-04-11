@@ -15,6 +15,8 @@ const cors = Cors()
 
 import fs from 'fs';
 import svg2img from 'svg2img';
+import * from "bufferutil";
+import * from  "utf-8-validate";
 import {temporaryFile} from 'tempy';
 
 export default async function corsHandler(req, res) {

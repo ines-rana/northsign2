@@ -1,8 +1,9 @@
-// Create a north sign (in SVG format)
+// Create a north sign (in SVG or PNG format)
 
 // query parameters
 //  degrees :  desired rotation
 //  scale   :  desired scale factor
+//  format  :  PNG | SVG (default)
 
 
 
@@ -10,6 +11,8 @@ const version = "2022-08"
 
 import Cors from "cors"
 const cors = Cors()
+
+const { convert } = require('convert-svg-to-png');
 
 export default async function corsHandler(req, res) {
 
@@ -29,14 +32,13 @@ export default async function corsHandler(req, res) {
 
 
 
-  //res.append('Content-Type', 'text/plain; charset=utf-8');
-  res.append('Content-Type', 'image/svg+xml; charset=utf-8');
-
-
   var degrees = req.query.degrees;
   if (!degrees) degrees = 0;
   var scale = req.query.scale;
   if (!scale) scale = 1.0;
+  var format = req.query.format;
+  if (!format) format = "SVG";
+  format = format.toUpperCase();
 
 
   const sign_svg = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -78,14 +80,35 @@ export default async function corsHandler(req, res) {
 </svg>
 `
 
-  res.send('' +
+  const result_svg = 
     sign_svg
     .replace("rotated by 0 degrees", "rotated by " + degrees + " degrees")
     .replace("rotate(0,200,200)", "rotate(" + degrees + ",200,200)")
     .replace("scaled by 1.0", "scaled by " + scale)
-    .replace("scale(1.00,1.00)", "scale(" + scale + "," + scale + ")") +
-    '\n'
-  );
-  res.end();
+    .replace("scale(1.00,1.00)", "scale(" + scale + "," + scale + ")");
+
+  if (format === "SVG") {
+    res.append('Content-Type', 'image/svg+xml; charset=utf-8');
+    res.send( result_svg + '\n' );
+    res.end();
+    return;
+  }
+
+
+  if (format === "PNG") {
+    const png = await convert(result_svg);
+    res.append('Content-Type', 'image/png');
+    res.send(png);
+    res.end();
+    return;
+  }
+
+
+  if ( true ) {
+    //res.append('Content-Type', 'text/plain; charset=utf-8');
+    res.send('invalid query parameter "format" (acceptable values: "PNG" or "SVG")' + '\n' );
+    res.end();
+    return;
+  }
 
 }

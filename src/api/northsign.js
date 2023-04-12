@@ -41,39 +41,52 @@ export default async function corsHandler(req, res) {
 
 
   const sign_svg = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- north sign rotated by 0 degrees and scaled by 1.0 -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   width="400"
+   enable-background="new"
    height="400"
-   id="svg2">
+   width="400"
+   version="1.1">
 
   <g transform="scale(1.00,1.00)">
     <g
+       style="display:inline;opacity:1;"
+       id="bottom_layer">
+      <rect style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ff00ff;stroke-width:0.24566929;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+         y="0"
+         x="0"
+         height="400"
+         width="400"
+      />
+    </g>
+  
+    <g
        transform="rotate(0,200,200)"
-       style="fill:none;stroke-width:0.025in"
-       id="layer1">
-
-      <!-- circle -->
-      <path
-         style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-         d="m 370,179.76376 c 0,104.93411 -85.0659,190 -190,190 -104.934102,0 -190,-85.06589 -190,-190 0,-104.934099 85.065898,-189.999997 190,-189.999997 104.9341,0 190,85.065898 190,189.999997 z"
-         transform="translate(20,18.85827)" />
-      <path
-         style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-         d="m 200,-1.8767428 -59.61898,380.4987828 59.61898,-30 55.16314,30 z" />
-      <path
-         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-         d="M 200,-1.0509721 200,398.62204" />
-      <path
-         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-         d="m 0,198.62204 400,0" />
+       style="display:inline;opacity:1">
+        <path
+           style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m 370,179.76376 c 0,104.93411 -85.0659,190 -190,190 -104.934102,0 -190,-85.06589 -190,-190 0,-104.934099 85.065898,-189.999997 190,-189.999997 104.9341,0 190,85.065898 190,189.999997 z"
+           transform="translate(20,18.85827)"
+           id="circle" />
+  
+        <path
+           style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m 200,-1.8767428 -59.61898,380.4987828 59.61898,-30 55.16314,30 z"
+           id="arrow" />
+  
+        <path
+           style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 200,-1.0509721 V 398.62204"
+           id="axis_vertical" />
+  
+        <path
+           style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 0,198.62204 H 400"
+           id="axis_horizontal" />
     </g>
   </g>
 </svg>
